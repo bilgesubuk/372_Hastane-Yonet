@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <title>Doktor Secimi</title>
+</head>
+<body>
+<table id="hasta_tablosu" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Doktor Adı</th>
+        <th>İsim</th>
+        <th>Soyisim</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+
+</table>
+</body>
+</html>
+<script>
+    $( document ).ready(function() {
+        console.log("ready!");
+        $.ajax({
+            type: "GET",
+            url: "/doktorlari_getir",
+            async: false,
+            success: function (result) {
+                len = result.length;
+                console.log(result)
+                doktor_listesi = new Array(len);
+                for (var i = 0; i < len; i++) {
+                    doktor_listesi[i] = new Array(4);
+                }
+                for (var i = 0; i < result.length; i++) {
+                    doktor_listesi[i][0] = (result[i].id);
+                    doktor_listesi[i][1] = (result[i].alan);
+                    doktor_listesi[i][2] = (result[i].isim);
+                    doktor_listesi[i][3] = (result[i].soyisim);
+                }
+
+                populate_doktor_tablosu(doktor_listesi)
+            }
+        });
+
+    });
+    function populate_doktor_tablosu(doktor_listesi) {
+        var tabl = $("#hasta_tablosu");
+        var trd = "";
+        console.log(doktor_listesi)
+        for (var i = 0; i < doktor_listesi.length; i++) {
+            trd += "<tr>";
+            trd += "<td>" + doktor_listesi[i][0] + "</td>";
+            trd += "<td>" + doktor_listesi[i][1] + "</td>";
+            trd += "<td>" + doktor_listesi[i][2] + "</td>";
+            trd += "<td>" + doktor_listesi[i][3] + "</td>";
+            trd += "<td> <button class=\"button\" type=\"button\" id=\" " + doktor_listesi[i][0] + " \" >\n" +
+                " <span class=\"fas fa-file-excel\"></span> Doktor sec</button> </td>"
+        }
+        trd += "</tr>";
+        tabl.append(trd)
+        $('.button').bind("click", function(event) {
+            var urlParams = new URLSearchParams(window.location.search);
+            var id = urlParams.get('id');
+            var url  = "sekreter_randevu_saati?id=" +id +"&doktor_id="+this.id;
+            window.location= url;
+
+        });
+
+    }
+
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="utf-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <!-- Include Required Prerequisites -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+    <style type="text/css">
+        p, .back, h3 {
+            text-align: center;
+        }
+        .wrap {
+            margin: 0 auto;
+            width: 172px;
+        }
+        .btn {
+            float: left;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+<p class="wrap">
+    <button type="button" onclick="hasta_kaydet()">Hasta Kaydet</button>
+    <button type="button" onclick="randevu_sayfasi()">Randevu Ver</button>
+</p>
+
+<script>
+function hasta_kaydet() {
+    window.location="/hasta_kaydi";
+
+}
+function randevu_sayfasi() {
+    window.location="/sekreter_randevu_sayfasi";
+
+}
+</script>
+</body>
+</html>

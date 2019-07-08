@@ -1,0 +1,103 @@
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+</head>
+<form action="#" id="form_sample_1" class="form-horizontal">
+    <div class="form-body">
+        <div class="form-group">
+            <label class="control-label col-md-3">Hasta Tc
+                <span class="required" > * </span>
+            </label>
+            <div class="col-md-4">
+                <input id="hasta_tc" type="number" name="name" data-required="1" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Hasta Adı Soyadı
+                <span class="required" > * </span>
+            </label>
+            <div class="col-md-4">
+                <input id="hasta_adi" type="text" name="name" data-required="1" class="form-control" /> </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Yaş&nbsp;&nbsp;</label>
+            <div class="col-md-4">
+                <input id="message" name="occupation" type="number" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Cinsiyet
+                <span class="required"> * </span>
+            </label>
+            <div class="col-md-4">
+                <select id="cinsiyet" class="form-control" name="select">
+                    <option value="">Seçiniz...</option>
+                    <option id="1" value="erkek">Erkek</option>
+                    <option id="2" value="kadın">Kadın</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Kan Grubu
+                <span class="required"> * </span>
+            </label>
+            <div class="col-md-4">
+                <select id="kan_grubu" class="form-control" name="select">
+                    <option value="">Seçiniz...</option>
+                    <option  value="A+">A+</option>
+                    <option  value="A-">A-</option>
+                    <option  value="A+">B+</option>
+                    <option  value="A-">B-</option>
+                    <option  value="A+">AB+</option>
+                    <option  value="A-">AB-</option>
+                    <option  value="A+">0+</option>
+                    <option  value="A-">0-</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-9">
+                <button type="button" onclick="kaydet()" class="btn green">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $(document).ready(
+        function () {
+            var token = $("meta[name='_csrf']").attr("content");
+
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-Token": token
+                }
+            });
+        })
+
+    function kaydet () {
+        var cinsiyet = document.getElementById("cinsiyet").value
+        $.ajax({
+                type: "POST",
+                url: "/hasta_kaydet",
+                async: false,
+                data: {
+                    cinsiyet:cinsiyet
+                },
+                success:function (result) {
+                    if(result=="0"){
+                        alert("İşleminiz başarıyla tamamlanmıştır");
+                        window.location="/home/"+id;
+                    }
+                    else{
+                        alert("Bir hata meydana geldi")
+                    }
+                }
+            }
+        )
+    }
+
+</script>
