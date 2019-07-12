@@ -8,6 +8,7 @@ import java.util.Date;
 @Entity
 @Table(name = "calisan", uniqueConstraints = @UniqueConstraint(name = "username_uc"
         , columnNames = "kullaniciAdi"))
+
 public class Calisan {
     @Id
     @Column(name = "ID")
