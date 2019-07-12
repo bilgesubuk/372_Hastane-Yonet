@@ -28,6 +28,19 @@ public class Calisan {
     private String password;
 
 
+    private double maas;
+    @Column(unique = true)
+    private long tc;
+    private int calisma_saati;
+
+    public double getMaas() { return maas; }
+    public long getTc() { return tc; }
+    public int getCalisma_saati() { return calisma_saati; }
+
+    public void setMaas(int maas) { this.maas = maas; }
+    public void setTc(int tc) { this.tc = tc; }
+    public void setCalisma_saati(int calisma_saati) { this.calisma_saati = calisma_saati; }
+
     public int getGorev() {
         return gorev;
     }
