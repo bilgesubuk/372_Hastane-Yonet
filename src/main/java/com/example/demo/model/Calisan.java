@@ -30,8 +30,10 @@ public class Calisan {
 
 
     private double maas;
+
     @Column(unique = true)
     private long tc;
+    
     private int calisma_saati;
 
     public double getMaas() { return maas; }

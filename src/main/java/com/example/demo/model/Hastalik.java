@@ -8,21 +8,35 @@ import javax.persistence.*;
 
 public class Hastalik {
 
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+    private Long id;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
     @Column(unique = true)
-    private String IDD10;
+    private String ICD10;
 
     private String isim;
 
-    public String getIDD10() {
-        return IDD10;
+    public String getICD10() {
+        return ICD10;
     }
 
     public String getIsim() {
         return isim;
     }
 
-    public void setIDD10(String IDD10) {
-        this.IDD10 = IDD10;
+    public void setICD10(String ICD10) {
+        this.ICD10 = ICD10;
     }
 
     public void setIsim(String isim) {

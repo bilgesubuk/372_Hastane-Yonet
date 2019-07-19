@@ -7,10 +7,17 @@ import javax.persistence.*;
         , columnNames = "id"))
 
 public class Ameliyathane {
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+    private Long id;
 
-    @Column(unique = true)
-    private String id;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public void setId(String id) { this.id = id; }
-    public String getId() { return id; }
+    public Long getId() {
+        return id;
+    }
 }
