@@ -1,11 +1,12 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "hasta", uniqueConstraints = @UniqueConstraint(name = "username_uc"
-        , columnNames = "hastaTc"))
+        , columnNames = "hasta_tc"))
 public class Hasta {
     @Id
     @Column(name = "ID")
@@ -14,7 +15,7 @@ public class Hasta {
     private Long id;
 
     @Column(unique = true)
-    private Long hastaTc;
+    private Long hasta_tc;
 
     private String isim;
     private String soyisim;
@@ -31,11 +32,11 @@ public class Hasta {
     }
 
     public Long getHastaTc() {
-        return hastaTc;
+        return hasta_tc;
     }
 
     public void setHastaTc(Long hastaTc) {
-        this.hastaTc = hastaTc;
+        this.hasta_tc = hastaTc;
     }
 
     public String getIsim() {
@@ -88,4 +89,7 @@ public class Hasta {
     public Set<Ameliyat> getAmeliyat() {
         return ameliyat;
     }
+
+    @ManyToMany
+    private Set<Doktor> employees = new HashSet<>();
 }

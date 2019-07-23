@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -55,4 +56,19 @@ public class Doktor extends Calisan{
     public void setHemsire(Set<Hemsire> hemsire) {
         this.hemsire = hemsire;
     }
+
+    @Column(unique = true, name = "doktor_tc")
+    private long doktor_tc;
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Doktor_Hasta",
+            joinColumns = { @JoinColumn(name = "doktor_tc") },
+            inverseJoinColumns = { @JoinColumn(name = "hasta_tc") }
+    )
+    Set<Hasta> hasta = new HashSet<>();
+
+
+
 }
+
