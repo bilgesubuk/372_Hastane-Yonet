@@ -27,4 +27,16 @@ public class Bolum {
     public void setIsim(String isim) { this.isim = isim; }
     public String getIsim() { return isim; }
 
+
+    @ManyToOne
+    private Hastane hastane;
+
+    public Hastane getHastane() {
+        return hastane;
+    }
+
+    public void setHastane(Hastane hastane) {
+        this.hastane = hastane;
+    }
+
 }

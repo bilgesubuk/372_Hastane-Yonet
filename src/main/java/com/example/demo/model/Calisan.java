@@ -33,7 +33,7 @@ public class Calisan {
 
     @Column(unique = true)
     private long tc;
-    
+
     private int calisma_saati;
 
     public double getMaas() { return maas; }

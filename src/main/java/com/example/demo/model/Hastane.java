@@ -1,5 +1,5 @@
 package com.example.demo.model;
-
+import java.util.Set;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,7 +11,7 @@ import java.util.Date;
 public class Hastane {
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "hastane_id")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
     @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
     private Long id;
@@ -71,5 +71,18 @@ public class Hastane {
     public void setOda_sayisi(int oda_sayisi) {
         this.oda_sayisi = oda_sayisi;
     }
-    
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Bolum> bolum;
+
+    public Set getBolum() {
+        return bolum;
+    }
+
+    public void setBolum(Set bolum) {
+        this.bolum = bolum;
+    }
+
+
 }
