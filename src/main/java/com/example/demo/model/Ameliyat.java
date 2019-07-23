@@ -22,4 +22,15 @@ public class Ameliyat {
     public Long getId() {
         return id;
     }
+
+    @ManyToOne
+    private Doktor doktor;
+
+    public Doktor getDoktor() {
+        return doktor;
+    }
+
+    public void setDoktor(Doktor doktor) {
+        this.doktor = doktor;
+    }
 }

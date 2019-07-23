@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "doktor", uniqueConstraints = @UniqueConstraint(name = "username_uc"
@@ -30,5 +31,17 @@ public class Doktor extends Calisan{
 
     public void setAlan(String alan) {
         this.alan = alan;
+    }
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Ameliyat> ameliyat;
+
+    public Set<Ameliyat> getAmeliyat() {
+        return ameliyat;
+    }
+
+    public void setAmeliyat(Set<Ameliyat> ameliyat) {
+        this.ameliyat = ameliyat;
     }
 }
