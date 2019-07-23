@@ -91,5 +91,13 @@ public class Hasta {
     }
 
     @ManyToMany
-    private Set<Doktor> employees = new HashSet<>();
+    private Set<Doktor> doktor = new HashSet<>();
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Hasta_Hastalik",
+            joinColumns = { @JoinColumn(name = "hasta_tc") },
+            inverseJoinColumns = { @JoinColumn(name = "ICD10") }
+    )
+    Set<Hastalik> hastalik = new HashSet<>();
 }

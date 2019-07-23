@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Hastalik", uniqueConstraints = @UniqueConstraint(name = "username_uc"
@@ -42,4 +44,7 @@ public class Hastalik {
     public void setIsim(String isim) {
         this.isim = isim;
     }
+
+    @ManyToMany
+    private Set<Hasta> hasta = new HashSet<>();
 }
