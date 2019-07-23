@@ -1,5 +1,6 @@
 package com.example.demo.model;
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Bolum", uniqueConstraints = @UniqueConstraint(name = "username_uc"
@@ -39,4 +40,14 @@ public class Bolum {
         this.hastane = hastane;
     }
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Calisan> calisan;
+
+    public Set<Calisan> getCalisan() {
+        return calisan;
+    }
+
+    public void setCalisan(Set<Calisan> calisan) {
+        this.calisan = calisan;
+    }
 }

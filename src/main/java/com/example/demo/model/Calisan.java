@@ -101,6 +101,15 @@ public class Calisan {
     }
 
 
+    @ManyToOne
+    private Bolum bolum;
 
+    public void setBolum(Bolum bolum) {
+        this.bolum = bolum;
+    }
+
+    public Bolum getBolum() {
+        return bolum;
+    }
 }
 
