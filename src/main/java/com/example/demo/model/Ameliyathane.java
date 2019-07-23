@@ -20,4 +20,15 @@ public class Ameliyathane {
     public Long getId() {
         return id;
     }
+
+    @ManyToOne
+    private Hastane hastane;
+
+    public Hastane getHastane() {
+        return hastane;
+    }
+
+    public void setHastane(Hastane hastane) {
+        this.hastane = hastane;
+    }
 }

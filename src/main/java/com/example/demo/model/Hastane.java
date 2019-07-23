@@ -94,4 +94,15 @@ public class Hastane {
     public void setYonetici(Set<Yonetici> yonetici) {
         this.yonetici = yonetici;
     }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Ameliyathane> ameliyathane;
+
+    public Set<Ameliyathane> getAmeliyathane() {
+        return ameliyathane;
+    }
+
+    public void setAmeliyathane(Set<Ameliyathane> ameliyathane) {
+        this.ameliyathane = ameliyathane;
+    }
 }
