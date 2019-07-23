@@ -18,4 +18,17 @@ public class Hemsire {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @ManyToOne
+    private Doktor doktor;
+
+    public void setDoktor(Doktor doktor) {
+        this.doktor = doktor;
+    }
+
+    public Doktor getDoktor() {
+        return doktor;
+    }
 }
+
+

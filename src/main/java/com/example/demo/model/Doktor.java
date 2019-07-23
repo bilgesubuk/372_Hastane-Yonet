@@ -44,4 +44,15 @@ public class Doktor extends Calisan{
     public void setAmeliyat(Set<Ameliyat> ameliyat) {
         this.ameliyat = ameliyat;
     }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Hemsire> hemsire;
+
+    public Set<Hemsire> getHemsire() {
+        return hemsire;
+    }
+
+    public void setHemsire(Set<Hemsire> hemsire) {
+        this.hemsire = hemsire;
+    }
 }
