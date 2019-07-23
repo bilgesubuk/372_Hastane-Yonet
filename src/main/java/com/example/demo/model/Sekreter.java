@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Entity
@@ -28,5 +29,16 @@ public class Sekreter {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Randevu> randevu;
+
+    public Set<Randevu> getRandevu() {
+        return randevu;
+    }
+
+    public void setRandevu(Set<Randevu> randevu) {
+        this.randevu = randevu;
     }
 }

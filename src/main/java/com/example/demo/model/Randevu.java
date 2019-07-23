@@ -31,4 +31,14 @@ public class Randevu {
     }
 
 
+    @ManyToOne
+    private Sekreter sekreter;
+
+    public Sekreter getSekreter() {
+        return sekreter;
+    }
+
+    public void setSekreter(Sekreter sekreter) {
+        this.sekreter = sekreter;
+    }
 }
