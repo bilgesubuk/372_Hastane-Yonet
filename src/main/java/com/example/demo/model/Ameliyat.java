@@ -33,4 +33,15 @@ public class Ameliyat {
     public void setDoktor(Doktor doktor) {
         this.doktor = doktor;
     }
+
+    @ManyToOne
+    private Hasta hasta;
+
+    public Hasta getHasta() {
+        return hasta;
+    }
+
+    public void setHasta(Hasta hasta) {
+        this.hasta = hasta;
+    }
 }
