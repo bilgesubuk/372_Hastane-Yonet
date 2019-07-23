@@ -41,5 +41,16 @@ public class Yonetici {
     public String getPassword() {
         return password;
     }
+
+    @ManyToOne
+    private Hastane hastane;
+
+    public void setHastane(Hastane hastane) {
+        this.hastane = hastane;
+    }
+
+    public Hastane getHastane() {
+        return hastane;
+    }
 }
 

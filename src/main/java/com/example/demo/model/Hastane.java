@@ -84,5 +84,14 @@ public class Hastane {
         this.bolum = bolum;
     }
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Yonetici> yonetici;
 
+    public Set<Yonetici> getYonetici() {
+        return yonetici;
+    }
+
+    public void setYonetici(Set<Yonetici> yonetici) {
+        this.yonetici = yonetici;
+    }
 }
