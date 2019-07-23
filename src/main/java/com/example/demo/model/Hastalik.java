@@ -47,4 +47,7 @@ public class Hastalik {
 
     @ManyToMany
     private Set<Hasta> hasta = new HashSet<>();
+
+    @ManyToMany
+    private Set<Doktor> doktor = new HashSet<>();
 }

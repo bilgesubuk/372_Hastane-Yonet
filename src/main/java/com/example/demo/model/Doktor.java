@@ -69,6 +69,14 @@ public class Doktor extends Calisan{
     Set<Hasta> hasta = new HashSet<>();
 
 
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Doktor_Hastalik",
+            joinColumns = { @JoinColumn(name = "doktor_tc") },
+            inverseJoinColumns = { @JoinColumn(name = "ICD10") }
+    )
+    Set<Hastalik> hastalik = new HashSet<>();
+
 
 }
 
