@@ -1,10 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Randevu Saati Seç</title>
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery UI Datepicker - Default functionality</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $( function() {
+        $( "#datepicker" ).datepicker();
+    } );
+
+        function tarihsec () {
+            var urlParams = new URLSearchParams(window.location.search);
+            var date = document.getElementById("datepicker").value
+            var starttime = document.getElementById("starttime").value
+            var endtime= document.getElementById("endtime").value
+            var id = urlParams.get('id');
+            var doktor_id=urlParams.get('doktor_id');
+            console.log(date,starttime,endtime,id,doktor_id)
+            $.ajax({
+                type: "POST",
+                url: "/randevu_kaydet",
+                async: false,
+                data: {
+                    date:date,
+                    starttime: starttime,
+                    endtime: endtime,
+                    hasta_id:id,
+                    doktor_id:doktor_id
+                },
+                success:function (result) {
+                    if(result=="0"){
+                        alert("Randevu alınmıştır.");
+                        window.location="/sekreter_anasayfa";
+                    }
+                    else{
+                        alert("Lütfen tekrar tarih seciniz. Seçtiğiniz tarif doludur.")
+                    }
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 
+<label>Randevu saati seciniz:</label>
+<p>Date: <input type="text" id="datepicker"></p>
+<div>
+
+
+
+
+
+    <input type="time" id="starttime" name="appt"
+           min="8:00" max="18:00" required>
+    <input type="time" id="endtime" name="appt"
+           min="8:00" max="18:00" required>
+    <button id="bottom-panel" class="button" onclick="tarihsec()">Kaydet</button>
+</div>
 </body>
 </html>

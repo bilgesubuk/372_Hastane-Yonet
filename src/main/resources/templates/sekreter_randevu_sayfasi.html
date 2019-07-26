@@ -7,15 +7,16 @@
 </head>
 <body>
 <table id="hasta_tablosu" class="table table-striped">
-    <thead>
+    <thead>Hasta Sec</thead>
+    <tbody>
     <tr>
         <th>Id</th>
         <th>Tc</th>
         <th>İsim</th>
         <th>Soyisim</th>
     </tr>
-    </thead>
-    <tbody>
+
+
     </tbody>
 
 </table>
@@ -62,6 +63,8 @@
         trd += "</tr>";
         tabl.append(trd)
         $('.button').bind("click", function(event) {
+
+
            var url="/sekreter_doktor_secimi?id=" +this.id;
             window.location.href = url;
         });

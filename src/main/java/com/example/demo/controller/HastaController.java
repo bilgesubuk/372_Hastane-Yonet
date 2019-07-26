@@ -18,6 +18,7 @@ public class HastaController {
     @RequestMapping(value = {"/hastalari_getir"}, method = RequestMethod.GET)
     public ResponseEntity<?> getPeriods() {
             List<Hasta> hastaList = hastaService.findAll();
+        System.out.println(hastaList+    " ksahdkhadkjakhdj");
             return new ResponseEntity<>(hastaList, HttpStatus.OK);
     }
 }

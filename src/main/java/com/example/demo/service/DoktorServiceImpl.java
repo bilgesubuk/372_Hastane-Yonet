@@ -18,4 +18,8 @@ public class DoktorServiceImpl implements DoktorService {
     public List<Doktor> findAll() {
         return doktorRepository.findAll();
     }
+
+    public Doktor FindById(Long id) {
+        return doktorRepository.findbyId(id);
+    }
 }

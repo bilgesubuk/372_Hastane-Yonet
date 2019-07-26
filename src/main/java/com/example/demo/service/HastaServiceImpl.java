@@ -14,7 +14,15 @@ public class HastaServiceImpl implements HastaService {
 
     @Override
     public List<Hasta> findAll() {
+        System.out.println(hastaRepository.findAll());
         return hastaRepository.findAll();
     }
+    @Override
+    public void save(Hasta hasta) {
+        hastaRepository.save(hasta);
+    }
 
+    public Hasta FindById(Long id) {
+        return hastaRepository.findbyId(id);
+    }
 }

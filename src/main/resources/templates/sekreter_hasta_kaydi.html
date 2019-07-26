@@ -3,6 +3,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 </head>
 <form action="#" id="form_sample_1" class="form-horizontal">
+    <h1>Hasta Kaydet</h1>
     <div class="form-body">
         <div class="form-group">
             <label class="control-label col-md-3">Hasta Tc
@@ -24,7 +25,7 @@
         <div class="form-group">
             <label class="control-label col-md-3">Yaş&nbsp;&nbsp;</label>
             <div class="col-md-4">
-                <input id="message" name="occupation" type="number" class="form-control" />
+                <input id="yas" name="occupation" type="number" class="form-control" />
             </div>
         </div>
         <div class="form-group">
@@ -80,11 +81,19 @@
 
     function kaydet () {
         var cinsiyet = document.getElementById("cinsiyet").value
+        var kan_grubu = document.getElementById("kan_grubu").value
+        var hasta_tc = document.getElementById("hasta_tc").value
+        var hasta_adi = document.getElementById("hasta_adi").value
+        var yas = document.getElementById("yas").value
         $.ajax({
                 type: "POST",
                 url: "/hasta_kaydet",
                 async: false,
                 data: {
+                    kan_grubu:kan_grubu,
+                    hasta_tc: hasta_tc,
+                    hasta_adi: hasta_adi,
+                    yas: yas,
                     cinsiyet:cinsiyet
                 },
                 success:function (result) {

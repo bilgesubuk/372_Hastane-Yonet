@@ -55,24 +55,28 @@ public class LoginController {
     @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
     public ResponseEntity<?> deneme(@RequestParam(value = "username", required = true) String username,
                                     @RequestParam(value = "password", required = true) String password) {
-        Calisan k= calisanService.findByKullaniciAdi(username);
-        System.out.println(k.getId()+"   "+k.getGorev()+"    "+k.getPassword() +" vvvvvvvvvvvvv");
-        SekreterController.current_sekreter = k;
+        Calisan k = calisanService.findByKullaniciAdi(username);
+        //  SekreterController.current_sekreter = k;
         try {
             if (k.getPassword().equals(password)) {
-                if (k.getGorev()==1) {
+                if (k.getGorev() == 1) {
                     return new ResponseEntity<String>("sekreter_anasayfa/" + k.getId(), HttpStatus.OK);
+                } else if (k.getGorev() == 2) {
+                    return new ResponseEntity<String>("doktor_anasayfa/" + k.getId(), HttpStatus.OK);
                 }
-                return new ResponseEntity<String>("home/" + k.getId(), HttpStatus.OK);
+            } else {
+
+                return new ResponseEntity<String>("1", HttpStatus.OK);
             }
-            else
-                return new ResponseEntity<String>("1", HttpStatus.OK);
-        }catch (NullPointerException e){
-                return new ResponseEntity<String>("1", HttpStatus.OK);
+
+
+            return new ResponseEntity<String>("1", HttpStatus.OK);
+        } catch (NullPointerException e) {
+            return new ResponseEntity<String>("1", HttpStatus.OK);
 
         }
     }
 
-}
 
+}
 

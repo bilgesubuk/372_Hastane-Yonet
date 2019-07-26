@@ -8,14 +8,15 @@
 <body>
 <table id="hasta_tablosu" class="table table-striped">
     <thead>
+    Doktor Listesi
+    </thead>
+    <tbody>
     <tr>
         <th>Id</th>
-        <th>Doktor Adı</th>
+        <th>Doktor Alanı</th>
         <th>İsim</th>
         <th>Soyisim</th>
     </tr>
-    </thead>
-    <tbody>
     </tbody>
 
 </table>
@@ -36,6 +37,7 @@
                     doktor_listesi[i] = new Array(4);
                 }
                 for (var i = 0; i < result.length; i++) {
+
                     doktor_listesi[i][0] = (result[i].id);
                     doktor_listesi[i][1] = (result[i].alan);
                     doktor_listesi[i][2] = (result[i].isim);

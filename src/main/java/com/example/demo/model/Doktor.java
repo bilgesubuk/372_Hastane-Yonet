@@ -1,5 +1,8 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +20,18 @@ public class Doktor extends Calisan{
 
     private String alan;
 
+    @JsonBackReference
+    @JsonIgnoreProperties
+    @OneToMany(mappedBy="doktor", fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    private Set<Randevu> randevular;
+
+    public Set<Randevu> getRandevular() {
+        return randevular;
+    }
+
+    public void setRandevular(Set<Randevu> randevular) {
+        this.randevular = randevular;
+    }
 
     public Long getId() {
         return id;
@@ -57,14 +72,12 @@ public class Doktor extends Calisan{
         this.hemsire = hemsire;
     }
 
-    @Column(unique = true, name = "doktor_tc")
-    private long doktor_tc;
-
+/*
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "Doktor_Hasta",
-            joinColumns = { @JoinColumn(name = "doktor_tc") },
-            inverseJoinColumns = { @JoinColumn(name = "hasta_tc") }
+            joinColumns = { @JoinColumn(name = "tc") },
+            inverseJoinColumns = { @JoinColumn(name = "tc") }
     )
     Set<Hasta> hasta = new HashSet<>();
 
@@ -72,11 +85,11 @@ public class Doktor extends Calisan{
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "Doktor_Hastalik",
-            joinColumns = { @JoinColumn(name = "doktor_tc") },
+            joinColumns = { @JoinColumn(name = "tc") },
             inverseJoinColumns = { @JoinColumn(name = "ICD10") }
     )
     Set<Hastalik> hastalik = new HashSet<>();
-
+*/
 
 }
 

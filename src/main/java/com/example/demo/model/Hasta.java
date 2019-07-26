@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,6 +24,19 @@ public class Hasta {
     private String kan;
     private String cinsiyet;
     private String yas;
+
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "hasta", fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    private Set<Randevu> randevular;
+
+    public Set<Randevu> getRandevular() {
+        return randevular;
+    }
+
+    public void setRandevular(Set<Randevu> randevular) {
+        this.randevular = randevular;
+    }
 
     public Long getId() {
         return id;

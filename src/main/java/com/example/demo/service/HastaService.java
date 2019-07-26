@@ -8,4 +8,7 @@ import java.util.List;
 public interface HastaService {
     List<Hasta> findAll();
 
+    public Hasta FindById(Long id);
+    void save(Hasta hasta);
+
 }
